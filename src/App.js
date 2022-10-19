@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Rating from "./components/Rating";
+import ThankYou from "./components/ThankYou";
 
 function App() {
+  const [thankYou, setThankYou] = useState(false);
+  const [rating, setRating] = useState();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!thankYou ? (
+        <Rating
+          thankYou={thankYou}
+          setThankYou={setThankYou}
+          rating={rating}
+          setRating={setRating}
+        />
+      ) : (
+        <ThankYou rating={rating} />
+      )}
     </div>
   );
 }
